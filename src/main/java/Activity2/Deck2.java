@@ -24,14 +24,21 @@ public class Deck2 {
 
 	/**
 	 * Creates a new <code>Deck</code> instance.<BR>
-	 * It pairs each element of ranks with each element of suits,
-	 * and produces one of the corresponding card.
+		 * It pairs each element of ranks with each element of suits,
+		 * and produces one of the corresponding card.
 	 * @param ranks is an array containing all of the card ranks.
 	 * @param suits is an array containing all of the card suits.
 	 * @param values is an array containing all of the card point values.
 	 */
 	public Deck2(String[] ranks, String[] suits, int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		for (int i = 0; i < suits.length; i++)
+		{
+			for (int j = 0; j < ranks.length; j++)
+			{
+				cards.add(new Card2(ranks[j], suits[i], values[j]));
+			}
+			
+		}
 	}
 
 
@@ -41,7 +48,7 @@ public class Deck2 {
 	 */
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return true;
+		return size == 0;
 	}
 
 	/**
@@ -50,7 +57,7 @@ public class Deck2 {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return -1;
+		return size;
 	}
 
 	/**
@@ -68,7 +75,13 @@ public class Deck2 {
 	 */
 	public Card2 deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return new Card2("","",-1);
+		if (cards.size() ==0)
+			return null;
+		else {
+			size--;
+			return cards.removeFirst();
+		}
+				
 	}
 
 	/**
