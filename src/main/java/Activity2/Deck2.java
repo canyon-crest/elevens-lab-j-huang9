@@ -81,7 +81,7 @@ public class Deck2 {
 			return null;
 		else {
 			size--;
-			return cards.removeFirst();
+			return cards.remove(0);
 		}
 				
 	}
