@@ -1,4 +1,7 @@
 package Activity3;
+
+import java.util.Arrays;
+
 /**
  * This class provides a convenient way to test shuffling methods.
  */
@@ -52,6 +55,25 @@ public class Shuffler3 {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] temp = new int[values.length];
+		int mid = (values.length+1)/2;
+		
+		int unshuffledPosition = 0;
+		for (int i = 0; i < mid; i++)
+		{
+			temp[unshuffledPosition] = values[i];
+			unshuffledPosition += 2;
+		}
+		unshuffledPosition = 1;
+		for (int i = mid; i< values.length; i++)
+		{
+			temp[unshuffledPosition] = values[i];
+			unshuffledPosition += 2;
+		}
+		for (int i =0 ; i<values.length; i++)
+		{
+			values[i] = temp[i];
+		}
 	}
 
 	/**
@@ -67,5 +89,41 @@ public class Shuffler3 {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		for (int i = values.length-1; i> 0; i--)
+		{
+			int pos = (int)(Math.random()*(i+1));
+			int temp = values[pos];
+			values[pos] = values[i];
+			values[i] = temp;
+		}
 	}
+	
+	public String flip()
+	{
+		if ((int)(Math.random()*3) > 0)
+		{
+			return "heads";
+		}
+		return "tails";
+	
+	}
+	
+	public boolean arePermutations(int[] arr1, int[] arr2)
+	{
+		if (arr1.length != arr2.length)
+		{
+			return false;
+		}
+		Arrays.sort(arr1);
+		Arrays.sort(arr2);
+		for (int i = 0; i< arr1.length; i++)
+		{
+			if (arr1[i] != arr2[i])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+			
 }
